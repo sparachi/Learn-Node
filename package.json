@@ -1,0 +1,26 @@
+{
+  "name": "learn-node",
+  "version": "0.0.0",
+  "description": "This is my first Node package",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparachi/Learn-Node.git"
+  },
+  "keywords": [
+    "saikarthik",
+    "parachi"
+  ],
+  "author": "saikarthik parachi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sparachi/Learn-Node/issues"
+  },
+  "homepage": "https://github.com/sparachi/Learn-Node#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
