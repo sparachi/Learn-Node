@@ -1,0 +1,44 @@
+{
+    "name": "learn-node-library",
+    "description": "This is bower package configuration",
+    "main": "app.js",
+    "authors": [
+    "saikarthik parachi"
+  ],
+    "license": "ISC",
+    "keywords": [
+    "saikarthik",
+    "parachi"
+  ],
+    "homepage": "https://github.com/sparachi/Learn-Node",
+    "moduleType": [],
+    "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+    "dependencies": {
+        "bootstrap": "^3.3.6",
+        "font-awesome": "^4.5.0"
+    },
+    "overrides": {
+        "bootstrap": {
+            "main": [
+                "dist/js/bootstrap.js",
+                "dist/css/bootstrap.min.css",
+                "less/bootstrap.less"
+            ]
+
+        },
+        "font-awesome": {
+            "main": [
+                "less/font-awesome.less",
+                "css/font-awesome.min.css",
+                "scss/font-awesome.scss"
+            ]
+
+        }
+    }
+}
