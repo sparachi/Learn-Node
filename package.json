@@ -23,6 +23,7 @@
   "homepage": "https://github.com/sparachi/Learn-Node#readme",
   "dependencies": {
     "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
     "jade": "^1.11.0"
   },
   "devDependencies": {

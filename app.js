@@ -11,13 +11,26 @@ var express = require('express');
 var testApp = express();
 var portToListen = process.env.PORT || 3000;
 
+var list = ['a', 'b', 'c', 'd', 'e'];
+
 testApp.use(express.static('public'));
 //testApp.use(express.static('src/views'));
 testApp.set('views', './src/views');
-testApp.set('view engine', 'jade');
+
+//testApp.set('view engine', 'jade');
+
+var handleBars = require('express-handlebars');
+
+testApp.engine('.hbs', handleBars({
+	extname: '.hbs'
+}));
+
+testApp.set('view engine', '.hbs');
 
 testApp.get('/', function (req, res) {
-	res.render('index');
+	res.render('index', {
+		list
+	});
 });
 
 testApp.listen(portToListen, function (err) {

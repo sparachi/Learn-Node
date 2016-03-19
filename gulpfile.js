@@ -37,8 +37,9 @@ gulp.task('inject', function () {
 		//to avoid wiredep spit the entire path in our html/jade file use 'ignorePath' attribute
 		ignorePath: '../../public'
 	};
-
-	return gulp.src('./src/views/*.jade') // changing from *.html to *.jade
+	// changing from *.html to *.jade
+	// changing from *.jade to *.hbs
+	return gulp.src('./src/views/*.hbs')
 		.pipe(wiredep(options))
 		.pipe(customFileInjection(customFilesSource, customFileOptions))
 		.pipe(gulp.dest('./src/views'));
