@@ -39,7 +39,8 @@ gulp.task('inject', function () {
 	};
 	// changing from *.html to *.jade
 	// changing from *.jade to *.hbs
-	return gulp.src('./src/views/*.hbs')
+	// changing from *.hbs to *.ejs
+	return gulp.src('./src/views/*.ejs')
 		.pipe(wiredep(options))
 		.pipe(customFileInjection(customFilesSource, customFileOptions))
 		.pipe(gulp.dest('./src/views'));

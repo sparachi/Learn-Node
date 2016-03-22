@@ -1,4 +1,8 @@
 var express = require('express');
+var testApp = express();
+var sql = require('mssql');
+var bodyParser = require('body-parser');
+
 
 //var message = "hello Brackets";
 //
@@ -8,10 +12,29 @@ var express = require('express');
 //    console.log("hi");
 //}
 
-var testApp = express();
+
 var portToListen = process.env.PORT || 3000;
+var sqlConfig = {
+	user: 'books',
+	password: 'pluralsight1@',
+	server: 'gpnju6fwr2.database.windows.net',
+	database: 'Books',
+	options: {
+		encrypt: true
+	}
+}
 
 var list = ['a', 'b', 'c', 'd', 'e'];
+var navBarItems = [{
+	link: "/Books",
+	linkText: "Book"
+	}, {
+	link: "/Authors",
+	linkText: "Author"
+	},{
+	link: "/AddBooks",
+	linkText: "Add Books"
+}];
 
 testApp.use(express.static('public'));
 //testApp.use(express.static('src/views'));
@@ -19,17 +42,34 @@ testApp.set('views', './src/views');
 
 //testApp.set('view engine', 'jade');
 
-var handleBars = require('express-handlebars');
+//var handleBars = require('express-handlebars');
+//
+//testApp.engine('.hbs', handleBars({
+//	extname: '.hbs'
+//}));
+//
+//testApp.set('view engine', '.hbs');
 
-testApp.engine('.hbs', handleBars({
-	extname: '.hbs'
-}));
+testApp.set('view engine', 'ejs');
 
-testApp.set('view engine', '.hbs');
+//sql.connect(sqlConfig, function (err) {
+//	console.log(err);
+//});
+//not using sql as of now
+
+
+testApp.use(bodyParser.json()) // support json encoded bodies
+testApp.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+var bookRouter = require('./src/routes/bookRoutes')(navBarItems);
+testApp.use('/Books', bookRouter);
+
+var addBookRouter = require('./src/routes/addBookRoutes')(navBarItems);
+testApp.use('/AddBooks', addBookRouter);
 
 testApp.get('/', function (req, res) {
 	res.render('index', {
-		list
+		nav: navBarItems
 	});
 });
 
