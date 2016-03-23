@@ -1,7 +1,7 @@
 var express = require('express');
 var addBookRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 
 var mongoConfig = {
 	url: 'mongodb://localhost:27017/testdb'

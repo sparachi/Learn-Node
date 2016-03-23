@@ -23,12 +23,15 @@
   "homepage": "https://github.com/sparachi/Learn-Node#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.13.0",
     "jade": "^1.11.0",
     "mongodb": "^2.1.7",
-    "mssql": "^3.1.2"
+    "mssql": "^3.1.2",
+    "passport": "^0.3.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
