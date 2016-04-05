@@ -53,6 +53,12 @@ var router = function (navBarItems) {
 	// 	commented the sql connection as we were not able to use it
 
 
+	bookRouter.use(function (req, res, next) {
+		if(!req.user) {
+			res.redirect('/');
+		}
+		next();
+	});
 
 	bookRouter
 		.route('/')

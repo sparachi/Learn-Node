@@ -2,6 +2,9 @@ var express = require('express');
 var testApp = express();
 var sql = require('mssql');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var expressSession = require('express-session');
 
 
 //var message = "hello Brackets";
@@ -60,12 +63,18 @@ testApp.set('view engine', 'ejs');
 
 testApp.use(bodyParser.json()) // support json encoded bodies
 testApp.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+testApp.use(cookieParser());
+testApp.use(expressSession({secret: 'library'}));
+require('./src/config/passportAuth')(testApp);
 
 var bookRouter = require('./src/routes/bookRoutes')(navBarItems);
 testApp.use('/Books', bookRouter);
 
 var addBookRouter = require('./src/routes/addBookRoutes')(navBarItems);
 testApp.use('/AddBooks', addBookRouter);
+
+var authenticationRouter = require('./src/routes/authentication')(navBarItems);
+testApp.use('/auth', authenticationRouter);
 
 testApp.get('/', function (req, res) {
 	res.render('index', {
